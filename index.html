@@ -1,125 +1,468 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoboMaker Kits Educacionais</title>
+    <title>RoboMaker - Loja de Robótica Educacional</title>
+    <!--CSS Interno-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .cabecalhoPrincipal {
+            background-color: #ffffff;
+            padding: 1.5rem 5%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .titulo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .listaNavegacao {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .linkNav {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .linkNav:hover {
+            color: #d32f2f;
+        }
+
+        .botaoPrincipal {
+            display: inline-block;
+            background-color: #d32f2f;
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .botaoPrincipal:hover {
+            background-color: #b71c1c;
+            color: #ffffff;
+        }
+
+        .container {
+            padding: 4rem 5%;
+        }
+
+        .tituloSecao {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .secaoHero {
+            background-color: #e3f2fd;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-bottom: 4px solid #d32f2f;
+        }
+
+        .secaoHero h2 {
+            font-size: 3rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .secaoHero p {
+            font-size: 1.2rem;
+            max-width: 660px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .gradeProdutos {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cartaoProduto {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cartaoProduto:hover {
+            transform: translateY(-5px);
+        }
+
+        .nomeProduto {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333333;
+        }
+
+        .cartaoProduto img {
+            width: 250px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .preco {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .rodape {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .rodape h2,
+        .rodape h3 {
+            color: #ffffff;
+        }
+
+        .rodape ul {
+            margin-top: 1rem;
+            line-height: 2;
+        }
+
+        .rodape a {
+            color: #ffffff;
+        }
+
+        .rodape form {
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .rodape input,
+        .rodape button {
+            padding: 0.8rem;
+            border: none;
+            outline: none;
+        }
+
+        .rodape input {
+            width: 100%;
+            max-width: 220px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .rodape button {
+            background-color: #d32f2f;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .rodape .socialIcons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .rodape .socialIcons img {
+            width: 30px;
+        }
+
+        .depoimentos {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .depoimento {
+            background: #ffffff;
+            padding: 2rem;
+            border-left: 5px solid #d32f2f;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+        }
+
+        .depoimento p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .depoimento footer {
+            font-weight: bold;
+        }
+
+        .contatoCard {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .contatoCard label {
+            display: block;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .contatoCard input,
+        .contatoCard select,
+        .contatoCard textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .contatoCard button {
+            width: 100%;
+            border: none;
+            background-color: #d32f2f;
+            color: #ffffff;
+            padding: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .cabecalhoPrincipal,
+            .rodape {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .listaNavegacao {
+                justify-content: center;
+            }
+
+            .gradeProdutos,
+            .depoimentos {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <h1>RoboMaker Kits Educacionais</h1>
-        <nav>
-            <ul>
-                <li><a href="#categorias">Categorias</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#cursos">Cursos</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+    <!-- Cabeçalho do site -->
+    <header id="header" class="cabecalhoPrincipal">
+        <div id="logo">
+            <h1 class="titulo">RoboMaker</h1>
+        </div>
+        <nav id="nav">
+            <ul class="listaNavegacao">
+                <li><a href="#hero" class="linkNav">Início</a></li>
+                <li><a href="#sobre" class="linkNav">Sobre</a></li>
+                <li><a href="#produtos" class="linkNav">Produtos</a></li>
+                <li><a href="#depoimentos" class="linkNav">Depoimentos</a></li>
+                <li><a href="#contato" class="linkNav">Contato</a></li>
+                <li><a href="cadastro.html" class="linkNav">Cadastro</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Conteúdo Principal -->
     <main>
-        <!-- Nossas Categorias -->
-    <section id="categorias">
-        <h2>Nossas Categorias</h2>
-        <ul>
-            <li>Placas Microcontroladoras</li>
-            <li>Sensores</li>
-            <li>Motores e Servos</li>
-            <li>Estruturas de Montagem</li>
-        </ul>
-    </section>
+        <!-- Seção Hero -->
+        <section id="hero" class="secaoHero">
+            <h2>O futuro da robótica começa aqui</h2>
+            <p>Encontre kits educacionais, componentes e cursos para desenvolver projetos de robótica com qualidade e suporte técnico.</p>
+            <img src="https://images.unsplash.com/photo-1647427060118-4911c9821b82" width="600" style="border-radius: 12px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);">
+            <br><br>
+            <a href="cadastro.html" class="botaoPrincipal">Cadastre-se agora</a>
+        </section>
 
-    <!-- Nossos Produtos -->
-    <section id="produtos">
-        <h2>Nossos Produtos</h2>
+        <!-- Seção Sobre -->
+        <section id="sobre" class="container">
+            <h2 class="tituloSecao">Sobre a RoboMaker</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>Nossa loja nasceu da paixão por tecnologia e educação. Nossa missão é entregar kits e componentes acessíveis para estudantes e educadores explorarem robótica com segurança.</p>
+                <ul style="text-align: left; display: inline-block; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">✅ Kits revisados por nossa equipe técnica</li>
+                    <li style="margin-bottom: 0.5rem;">✅ Garantia de fábrica</li>
+                    <li style="margin-bottom: 0.5rem;">✅ Suporte técnico com professores e engenheiros</li>
+                </ul>
+            </div>
+        </section>
 
-        <article>
-            <h3>Placas Microcontroladoras</h3>
-            <img src="https://images.unsplash.com/photo-1651340550839-3b295d930048" alt="Placa Microcontroladora Arduino" width="300" height="200">
-            <p>Nossas placas microcontroladoras são projetadas para oferecer desempenho e versatilidade em projetos de robótica educacional. Com uma variedade de opções, desde placas básicas para iniciantes até modelos avançados para projetos mais complexos, nossas placas são compatíveis com uma ampla gama de sensores e atuadores, permitindo que os estudantes explorem e criem robôs incríveis.</p>
-            <strong>R$ 500,00</strong>
-        </article>
+        <!-- Seção de Produtos -->
+        <section id="produtos" class="container" style="background-color: #eeeeee;">
+            <h2 class="tituloSecao">Catálogo de Produtos</h2>
+            <div class="gradeProdutos">
+                <article class="cartaoProduto">
+                    <h3 class="nomeProduto">Kit de Robótica Educacional</h3>
+                    <img src="https://plus.unsplash.com/premium_photo-1723773730761-31c37be2e8c1" alt="Kit de Robótica" width="250" style="border-radius: 4px; margin-bottom: 1rem;">
+                    <p><strong>Marca:</strong> RoboMaker</p>
+                    <p>Kit completo para aprendizado de programação e montagem de robôs.</p>
+                    <p class="preco"><em>Preço: R$ 1.299,00</em></p>
+                    <a href="#contato" class="botaoPrincipal">Comprar agora</a>
+                </article>
+                <article class="cartaoProduto">
+                    <h3 class="nomeProduto">Placa Arduino Uno</h3>
+                    <img src="https://images.unsplash.com/photo-1562976540-78c559c80296" alt="Placa Arduino" width="250" style="border-radius: 4px; margin-bottom: 1rem;">
+                    <p><strong>Marca:</strong> Arduino</p>
+                    <p>Placa microcontroladora versátil para protótipos e projetos educacionais.</p>
+                    <p class="preco"><em>Preço: R$ 220,00</em></p>
+                    <a href="#contato" class="botaoPrincipal">Comprar agora</a>
+                </article>
+                <article class="cartaoProduto">
+                    <h3 class="nomeProduto">Kit Sensores</h3>
+                    <img src="https://images.unsplash.com/photo-1620634415912-ec5aa1e89d0d" alt="Kit Sensores" width="250" style="border-radius: 4px; margin-bottom: 1rem;">
+                    <p><strong>Marca:</strong> RoboMaker</p>
+                    <p>Conjunto com sensores de distância, luz, temperatura e movimento.</p>
+                    <p class="preco"><em>Preço: R$ 349,00</em></p>
+                    <a href="#contato" class="botaoPrincipal">Comprar agora</a>
+                </article>
+            </div>
+        </section>
 
-        <article>
-            <h3>Sensores</h3>
-            <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48" alt="Sensores Eletrônicos" width="300" height="200">
-            <p>Nossos sensores são essenciais para a construção de robôs inteligentes e responsivos. Oferecemos uma variedade de sensores, incluindo sensores de distância, sensores de luz, sensores de temperatura e muito mais. Esses sensores permitem que os robôs percebam o ambiente ao seu redor, tornando-os capazes de tomar decisões informadas e interagir com o mundo de maneira eficaz.</p>
-            <strong>R$ 200,00</strong>
-        </article>
+        <!-- Seção Depoimentos -->
+        <section id="depoimentos" class="container">
+            <h2 class="tituloSecao">O que nossos clientes dizem</h2>
+            <div class="depoimentos">
+                <blockquote class="depoimento">
+                    <p>"O kit chegou rápido e foi perfeito para o curso de robótica da escola. O material é de ótima qualidade."</p>
+                    <footer>- <cite>Lucas Andrade, estudante</cite></footer>
+                </blockquote>
+                <blockquote class="depoimento">
+                    <p>"O suporte da RoboMaker me ajudou a montar o robô passo a passo. Recomendo para quem está começando."</p>
+                    <footer>- <cite>Ana Clara, professora</cite></footer>
+                </blockquote>
+            </div>
+        </section>
 
-        <article>
-            <h3>Motores e Servos</h3>
-            <img src="https://images.unsplash.com/photo-1723730741647-caaea47ac90f" alt="Motores e Servos" width="300" height="200">
-            <p>Nossos motores e servos são projetados para fornecer movimento preciso e controle em projetos de robótica educacional. Com uma variedade de opções, desde motores DC simples até servos de alta precisão, nossos produtos permitem que os estudantes criem robôs que se movem, giram e interagem com o ambiente de maneira eficaz.</p>
-            <strong>R$ 300,00</strong>
-        </article>
-
-        <article>
-            <h3>Estruturas de Montagem</h3>
-            <img src="https://images.unsplash.com/photo-1591238372338-22d30c883a86" alt="Estrutura de Montagem Robótica" width="300" height="200">
-            <p>Nossa estrutura de montagem é projetada para facilitar a construção de robôs funcionais e duráveis. Com uma variedade de peças e acessórios, os estudantes podem criar estruturas robustas que suportem os componentes eletrônicos e mecânicos necessários para seus projetos de robótica.</p>
-            <strong>R$ 400,00</strong>
-        </article>
-    </section>
-
-    <!-- Oficinas Presenciais -->
-    <section id="cursos">
-        <h2>Oficinas Presenciais</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Curso</th>
-                    <th>Duração</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Lógica e Pensamento Computacional</td>
-                    <td>40h</td>
-                    <td>R$ 250,00</td>
-                </tr>
-                <tr>
-                    <td>Introdução à Robótica</td>
-                    <td>20h</td>
-                    <td>R$ 200,00</td>
-                </tr>
-                <tr>
-                    <td>Robótica Avançada</td>
-                    <td>40h</td>
-                    <td>R$ 300,00</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <!-- Seção Contato -->
+        <section id="contato" class="container" style="background-color: #eceff1;">
+            <h2 class="tituloSecao">Fale Conosco</h2>
+            <div class="contatoCard">
+                <p style="text-align: center; margin-bottom: 2rem;">Tem dúvidas sobre nossos kits ou cursos? Envie uma mensagem e nossa equipe entrará em contato.</p>
+                <address style="text-align: center; margin-bottom: 2rem; font-style: normal;">
+                    <p>Loja Física: <strong>Centro Educacional, São Paulo-SP</strong></p>
+                </address>
+                <form action="#">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento">
+                        <option value="vendas">Vendas</option>
+                        <option value="suporte">Suporte Técnico</option>
+                        <option value="financeiro">Financeiro</option>
+                        <option value="sugestao">Sugestões</option>
+                    </select>
+                    <label for="mensagem">Mensagem</label>
+                    <textarea name="mensagem" id="mensagem" rows="6" placeholder="Digite sua mensagem"></textarea>
+                    <button type="submit" class="botaoPrincipal">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 RoboMaker Kits Educacionais. Todos os direitos reservados.</p>
-        <p>Desenvolvido por: Nelson Luiz De Oliveira Cechin</p>
-        <p>Redes Sociais:</p>
-         <h3>Siga-nos</h3>
-            <div>
-                <a href="">
-                    <img src="instagram.png" alt="Instagram">
-                </a>
-                <a href="">
-                    <img src="facebook.png" alt="Facebook">
-                </a>
-                <a href="">
-                    <img src="youtube.png" alt="YouTube">
-                </a>
+    <!-- Rodapé do Site -->
+    <footer id="footer" class="rodape">
+        <div style="flex: 1; min-width: 250px;">
+            <h2 class="titulo">RoboMaker</h2>
+            <p>Desde 2026, conectando educação e tecnologia por meio da robótica.</p>
+        </div>
+
+        <nav style="flex: 1; min-width: 150px;">
+            <h3 style="border-bottom: 2px solid #d32f2f; padding-bottom: 0.5rem; display: inline-block;">Mapa do Site</h3>
+            <ul style="margin-top: 1rem; line-height: 2;">
+                <li><a href="#hero" class="linkNav">Início</a></li>
+                <li><a href="#sobre" class="linkNav">Sobre</a></li>
+                <li><a href="#produtos" class="linkNav">Produtos</a></li>
+                <li><a href="#depoimentos" class="linkNav">Depoimentos</a></li>
+                <li><a href="#contato" class="linkNav">Contato</a></li>
+            </ul>
+        </nav>
+
+        <nav style="flex: 1; min-width: 150px;">
+            <h3 style="border-bottom: 2px solid #d32f2f; padding-bottom: 0.5rem; display: inline-block;">Informações</h3>
+            <ul style="margin-top: 1rem; line-height: 2;">
+                <li><a href="#" class="linkNav">Termos de Uso</a></li>
+                <li><a href="#" class="linkNav">Política de Privacidade</a></li>
+                <li><a href="#" class="linkNav">Trocas e Devoluções</a></li>
+            </ul>
+        </nav>
+
+        <div style="flex: 1; min-width: 150px;">
+            <h3 style="border-bottom: 2px solid #d32f2f; padding-bottom: 0.5rem; display: inline-block;">Siga-nos</h3>
+            <div class="socialIcons">
+                <a href="https://www.instagram.com/robomaker" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+                <a href="https://www.facebook.com/robomaker" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+                <a href="https://www.youtube.com/robomaker" target="_blank"><img src="youtube.png" alt="YouTube"></a>
             </div>
         </div>
-        <ul>
-            <li><a href="https://www.facebook.com/robomaker" target="_blank">Facebook</a></li>
-            <li><a href="https://www.instagram.com/robomaker" target="_blank">Instagram</a></li>
-            <li><a href="https://www.youtube.com/robomaker" target="_blank">YouTube</a></li>
-        </ul>
-    </footer
+
+        <div style="flex: 1; min-width: 150px;">
+            <h3 style="border-bottom: 2px solid #d32f2f; padding-bottom: 0.5rem; display: inline-block;">Newsletter</h3>
+            <p>Receba promoções exclusivas no seu e-mail</p>
+            <form action="">
+                <input type="email" name="email" placeholder="Digite seu e-mail" style="margin-top: 0; border-radius: 4px 0 0 4px; padding: 0.8rem; outline: none; width: 60%;">
+                <button type="submit" class="botaoPrincipal" style="margin-top: 0; border-radius: 0 4px 4px 0;">Assinar</button>
+            </form>
+        </div>
+
+        <div style="width: 100%; text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333333;">
+            <p>Copyright &copy; 2026 RoboMaker - Todos os direitos reservados. Site desenvolvido por Nelson Luiz De Oliveira Cechin.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
